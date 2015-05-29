@@ -16,3 +16,7 @@ This project contains an index.xhtml that tries to load the image of a dog throu
 However, the prime-faces code also seems to hint that their specialized dynamic content resource handler is bypassing the normal flow of the standard resource handler to handle their special use case.... 
 
 <P> Ideally either priemfaces or delta-spike would come together to find a resolution to allow view scoped beans to be allowed to host the dynamic content of a page.
+
+
+<P> Please visit the resources folder for a .docx that illustrates the issue.
+
