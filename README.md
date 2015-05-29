@@ -25,4 +25,5 @@ However, the prime-faces code also seems to hint that their specialized dynamic 
 <ul>
 <li> <a href="https://issues.apache.org/jira/browse/DELTASPIKE-914">DELTASPIKE-914</a>
 
+<li> <a href="https://github.com/primefaces/primefaces/issues/374">PRIMEFACES-374</a>
 </ul>
