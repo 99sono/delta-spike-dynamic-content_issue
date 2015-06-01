@@ -5,8 +5,15 @@
     <artifactId>deltaspike-dynamic-content</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>${project.artifactId}</name>    
-
+    <name>${project.artifactId}</name>       
+    
+    <repositories>
+        <repository>
+            <id>nexus_C4J</id>
+            <url>http://nexus-osc4j.rhcloud.com/content/groups/public</url>
+        </repository>
+    </repositories>
+    
     <dependencies>
 
         <dependency>
@@ -55,8 +62,16 @@
         <dependency>
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
-            <version>3.5</version>
+            <version>5.2</version>
         </dependency>
+        
+        <dependency>
+    <groupId>be.rubus.web.jsf.primefaces</groupId>
+    <artifactId>advanced-graphic-image</artifactId>
+    <version>1.2.2-SNAPSHOT</version>
+</dependency>
+
+        
 
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -118,7 +133,7 @@
 
 
     <build>
-        <finalName>jsf-viewaccessscoped</finalName>
+        <finalName>${project.artifactId}</finalName>
         <pluginManagement>
             <plugins>
                 <plugin>

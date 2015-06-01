@@ -6,6 +6,7 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:fn="http://java.sun.com/jsp/jstl/functions"
       xmlns:p="http://primefaces.org/ui"
+      xmlns:r="http://www.rubus.be/primefaces"
       xmlns:ds="http://deltaspike.apache.org/jsf"
       xmlns:mycustom="http://java.sun.com/jsf/composite/mycustom">
     
@@ -65,7 +66,23 @@
                 </h:panelGroup>
                 <br/>
                 <br/>
-                   
+                
+                 <h:panelGroup layout="block">
+                    <h:outputText value="As dynamicRsource determined fromViewScopedBean: " />                                        
+                    <br/>
+                    <br/>
+                    <p:graphicImage id="previewImageC2"  value="#{viewScopeadBean.streamedContent}"  width="250px" height="250px" rendered="true" >
+                        <r:advancedRenderering value="true"/>
+                    </p:graphicImage>
+                    
+                    
+                    <br/>
+                    <p> This one should be using the advanced graphicImage feature.
+                        As it uses advancedRenderering value="true"
+                    </p>
+                </h:panelGroup>
+                <br/>
+                <br/>
                    
                 <!-- RequestScoped area-->
                 <h:outputText value="Pinging The RequestScopedBean:" ></h:outputText>
