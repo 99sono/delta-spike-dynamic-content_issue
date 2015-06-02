@@ -27,7 +27,7 @@
             <p:messages id="errorMessups"/>
                 
                 
-            <h:form id="navigationForm" styleClass="form" >
+            <h:form id="viewAcessScopedForm" styleClass="form" title="ViewAccessScopedForm" >
                 <!-- Pure resource-->
                 <h:panelGroup layout="block">
                     <h:outputText value="As static resource: resource['image/blackLabrador.jpg'] " />           
@@ -83,7 +83,9 @@
                 </h:panelGroup>
                 <br/>
                 <br/>
-                   
+            </h:form>
+            
+            <h:form id="requestScopedForm" styleClass="form" title="RequestScopedForm">
                 <!-- RequestScoped area-->
                 <h:outputText value="Pinging The RequestScopedBean:" ></h:outputText>
                 <h:outputText value="#{requestScopedBean.ping}" ></h:outputText>
@@ -105,8 +107,76 @@
                     <p:graphicImage id="previewImageE"  value="#{requestScopedBean.streamedContent}"  width="250px" height="250px" rendered="true" />
                 </h:panelGroup>
                 <br/>
+                <br/>                                                                                
+                  
+                <!-- From View Scoped Bean Resource resource Dynamic Content-->
+                  <h:panelGroup layout="block">
+                    <h:outputText value="As dynamicRsource determined requestScopeadBean using advanced rendering: " />                                        
+                    <br/>
+                    <br/>
+                    <p:graphicImage id="previewImageE2"  value="#{requestScopedBean.streamedContent}"  width="250px" height="250px" rendered="true" >
+                        <r:advancedRenderering value="true"/>
+                    </p:graphicImage>
+                    
+                    
+                    <br/>
+                    <p> This one should be using the advanced graphicImage feature.
+                        As it uses advancedRenderering value="true".
+                        In this scenario we will likely not see a problematic issue of the default implementaiton
+                        of the advanced graphic image rendering closing the StreamedContent on the bean, since
+                        streamed content is provided from a request scoped bean and on each request a new stream content gets created.
+                        But the fact that the advanced grpahic image renderer is deciding to close the input stream is most likely an issue.
+                    </p>
+                </h:panelGroup>
+                <br/>
+                <br/> 
+            </h:form>
+            
+            
+            
+            
+             <h:form id="sessionScopedForm" styleClass="form" title="sessionScopedForm">
+                <!-- RequestScoped area-->
+                <h:outputText value="Pinging The sessionScopedBean" ></h:outputText>
+                <h:outputText value="#{sessionScopedBean.ping}" ></h:outputText>
+                    
+                <h:panelGroup layout="block">
+                    <h:outputText value="As resource determined from requestScopeadBean " />                                        
+                    <br/>
+                    <br/>
+                    <p:graphicImage id="previewImageF"  value="#{resource[sessionScopedBean.imageResource]}"  width="250px" height="250px" rendered="true" />
+                </h:panelGroup>
+                <br/>
                 <br/>
                    
+                <!-- From View Scoped Bean Resource resource Dynamic Content-->
+                <h:panelGroup layout="block">
+                    <h:outputText value="As dynamicRsource determined sessionScopedBean: " />                                        
+                    <br/>
+                    <br/>
+                    <p:graphicImage id="previewImageG"  value="#{sessionScopedBean.streamedContent}"  width="250px" height="250px" rendered="true" />
+                </h:panelGroup>
+                <br/>
+                <br/>                                                                                
+                  
+                <!-- From View Scoped Bean Resource resource Dynamic Content-->
+                  <h:panelGroup layout="block">
+                    <h:outputText value="As dynamicRsource determined sessionScopedBean using advanced rendering: " />                                        
+                    <br/>
+                    <br/>
+                    <p:graphicImage id="previewImageG2"  value="#{sessionScopedBean.streamedContent}"  width="250px" height="250px" rendered="true" >
+                        <r:advancedRenderering value="true"/>
+                    </p:graphicImage>
+                    
+                    
+                    <br/>
+                    <p> Here we could potentially have problems upon refresh, since the advanced graphic image renderer
+                        will close the StreamContent input stream. Therefore the element previewImageG will have problems
+                        upon trying to render the image a second time as the stream will be closed.
+                    </p>
+                </h:panelGroup>
+                <br/>
+                <br/> 
             </h:form>
             
         </h:body> 
